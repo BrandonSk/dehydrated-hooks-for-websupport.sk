@@ -25,7 +25,7 @@
 # >>> See HOOKS section below for further options to customize this script <<<
 
 # FUNCTIONS definitions
-function _assign_secrets {
+function _assign_single_secret {
         [ ${i} -eq 1 ] && WS_USER="${1}"
         [ ${i} -eq 2 ] && WS_PW="${1}"
 }
@@ -37,7 +37,7 @@ function _process_secrets_file {
         local i=1
         while IFS='' read -r line || [ -n "$line" ]; do
                 [ ${i} -gt 2 ] && break
-                _assign_secrets "$line"
+                _assign_single_secret "$line"
                 i=$((i+1))
         done < "${1}"
 }
