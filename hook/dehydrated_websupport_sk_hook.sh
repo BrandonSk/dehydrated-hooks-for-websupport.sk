@@ -129,7 +129,7 @@ deploy_challenge() {
 
         method="POST"
         query="/zone/${DOMAIN}/record"
-        challenge_name="_acme-challenge.${SUBDOMAIN}"
+        challenge_name="_acme-challenge${SUBDOMAIN}"
 
         # Calculate signature
         signature=$(_hash_hmac "sha1" "${method} ${path}${query} $(date +%s)" "${secret}")
